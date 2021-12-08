@@ -1,0 +1,21 @@
+<div class="weather-weak">Weak</div>
+<div class="days" *ngFor="let forecast of weatherData">
+    <div class="day-of-weak">{{ forecast.dt_txt | date: "EEEE" }}</div>
+    <div class="humidity">
+        <img class="humidity-icon" src="../../../assets/images/humidity.png" alt="humitity" />
+        {{ forecast.main?.humidity }}%
+    </div>
+    <img
+        class="weather-icon"
+        src="assets/images/{{ forecast.weather[0].icon }}.png"
+        alt="weather-icon"
+    />
+    <div class="temp">
+         {{ forecast.main?.temp_max | number: "0.0-0" }}°C /
+         <span class="night-temp">{{ forecast.main?.temp_min | number: "0.0-0" }}°C</span>
+    </div>
+    <div class="wind-speed">
+        <img class="wind-icon" src="../../../assets/images/wind_speed.png" alt="wind" />
+         {{ forecast.wind?.speed }} m/s
+    </div>
+</div>

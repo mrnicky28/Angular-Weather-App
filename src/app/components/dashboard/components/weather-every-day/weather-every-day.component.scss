@@ -1,0 +1,58 @@
+.weather-weak {
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: #3b367d;
+    margin-top: 36px;
+    font-family: Releway, sans-serif;
+}
+
+.days {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.day-of-weak {
+    width: 100px;
+    margin-right: 15px;
+}
+
+.night-temp {
+    font-weight: 600;
+    color: #251f6e;
+}
+
+.humidity {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    .humidity-icon {
+        width: 15px;
+        margin-right: 10px;
+    }
+}
+
+.weather-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+}
+
+.temp {
+    margin-right: 15px;
+}
+
+.wind-speed {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    .wind-icon {
+        width: 35px;
+        margin-right: 15px;
+    }
+}
