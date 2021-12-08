@@ -1,0 +1,25 @@
+
+<button
+(click)="addCity()"
+class="plus-button"
+> Add favorite city</button>
+<ng-template #tickBlock>
+<div class="success-checkmark" (click)="removeCity()"></div>
+</ng-template>
+<div class="today-info">
+    <div class="time"> {{ clock | date:'HH:mm:ss' }}</div>
+    <div class="day" *ngIf="weatherNow">
+        <img class="weather-today-icon" src="assets/images/{{weatherNow.weather[0].icon}}.png" alt="weather-icon">
+        <span class="today">Today</span>
+        <div class="date">{{ currentTime | date:"EEEE, d MMM"}}</div>
+        <div class="temperature">{{ weatherNow.main.temp | number: "0.0-0"}}<sup class="degrees">°C</sup>
+        </div>
+        <div class="location">{{ dataToday.city.name }}, {{ dataToday.city.country }}</div>
+    </div>
+    <div class="timeline">
+        <div class="test" *ngFor="let item of timeline">
+            <div class="time">{{ item.time | date:"HH:mm"}}</div>
+            <div class="timeline-degrees">{{ item.temp | number:"0.0-0" }}°C</div>
+        </div>
+    </div>
+</div>

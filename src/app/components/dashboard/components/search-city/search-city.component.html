@@ -1,0 +1,14 @@
+<form >
+    <input
+        class="input-search-city"
+        type="text"
+        placeholder="Enter Location"
+        [formControl]="searchValue"
+        name="autocompleteInput"
+        #addresstext
+    />
+    <button class="btn-search" (click)="newData()">Search</button>
+</form>
+
+<!-- [formGroup]="citySearch" -->
+<!-- [(ngModel)]="autocompleteInput" -->

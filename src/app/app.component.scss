@@ -1,0 +1,55 @@
+.app-wrapper {
+    display: flex;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.right-content {
+    width: 60%;
+}
+
+.left-content {
+    width: 40%;
+}
+
+@media (max-width: 960px) {
+    .app-wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .right-content {
+        width: 100%;
+        order: 2;
+    }
+    .left-content {
+        width: 100%;
+        order: 1;
+    }
+}
+
+@media (max-width: 1024px) and (min-height: 1096px) {
+    .app-wrapper {
+        height: 100%;
+    }
+}
+
+@media (min-width: 1360px) and (min-height: 810px) {
+    .app-wrapper {
+        height: 100%;
+    }
+}
+
+// @media (max-width: 1360px) {
+//     .app-wrapper {
+//         height: 100%;
+//     }
+// }
+// @media (min-width: 1360px) and (min-height: 2000px) {
+//     .app-wrapper {
+//         height: 100%;
+//     }
+// }

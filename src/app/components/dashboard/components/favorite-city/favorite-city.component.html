@@ -1,0 +1,4 @@
+<div class="title-favorite-city">Weather <span class="bold-word"> Forecast</span></div>
+<app-city-card *ngFor="let city of cities" (click)="loadWeather(city)" [city]="city"></app-city-card>
+
+
