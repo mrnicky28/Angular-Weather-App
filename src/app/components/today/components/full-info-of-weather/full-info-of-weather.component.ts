@@ -1,7 +1,5 @@
 import { Subscription } from 'rxjs';
-import {
-    CityData, DataToday, OneWeather, Place, TimeLine, WeatherNow
-} from 'src/app/model/weather';
+import { CityData, DataToday, Place, TimeLine, WeatherNow } from 'src/app/model/weather';
 import { ForecastService } from 'src/app/shared/services/forecast.service';
 
 import { Component, OnInit } from '@angular/core';
@@ -28,17 +26,14 @@ export class FullInfoOfWeatherComponent implements OnInit {
         this.forecastService.currentData.subscribe((data) => {
             (this.cityData = data), this.getCityNowWeather();
         });
-        this.sub = this.forecastService.subject.subscribe((result: OneWeather) => {
-            console.log('result', result);
-
-            this.cityDetail = {
-                name: result.timezone,
-                lat: result.lat,
-                lon: result.lon,
-                added: result.added,
-            };
-            console.log('cityDetail', this.cityDetail);
-        });
+        // this.sub = this.forecastService.subject.subscribe((result: OneWeather) => {
+        //     this.cityDetail = {
+        //         name: result.timezone,
+        //         lat: result.lat,
+        //         lon: result.lon,
+        //         added: result.added,
+        //     };
+        // });
     }
 
     addCity() {
@@ -48,7 +43,6 @@ export class FullInfoOfWeatherComponent implements OnInit {
     }
 
     removeCity() {
-        console.log('removwcitycomponent');
         this.cityDetail.added = false;
         this.forecastService.removeCity({ ...this.cityDetail });
     }
@@ -64,6 +58,10 @@ export class FullInfoOfWeatherComponent implements OnInit {
         this.forecastService
             .getWeatherByCityName(this.cityData)
             .subscribe((data) => this.getTodayForecast(data));
+        // this.forecastService.dataCity.subscribe((data: any) => {
+        //     this.cityData = data;
+        //       this.getTodayForecast(data);
+        // });
     }
 
     getTime() {
