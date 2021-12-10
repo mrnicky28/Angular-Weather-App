@@ -21,10 +21,10 @@ export class FavoriteCityComponent implements OnInit, AfterViewInit {
         );
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.forecastService.getCities();
     }
-    loadWeather(city: Place) {
+    loadWeather(city: Place): void {
         this.forecastService.citySub.next({ ...city });
     }
 }

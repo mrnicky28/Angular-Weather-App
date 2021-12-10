@@ -22,11 +22,11 @@ export class SearchCityComponent implements AfterViewInit, OnInit {
 
     constructor(public forecastService: ForecastService) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         // this.searchValue.valueChanges.pipe(debounceTime(500)).subscribe((value) => {
         // });
     }
-    newData() {
+    newData(): void {
         this.forecastService.changeData(this.latlongs);
         this.searchValue.reset();
     }
@@ -35,7 +35,7 @@ export class SearchCityComponent implements AfterViewInit, OnInit {
         this.getPlaceAutocomplete();
     }
 
-    private getPlaceAutocomplete() {
+    private getPlaceAutocomplete(): void {
         const autocomplete = new google.maps.places.Autocomplete(
             this.addresstext.nativeElement,
             {
@@ -48,7 +48,7 @@ export class SearchCityComponent implements AfterViewInit, OnInit {
             this.codeAddress(place);
         });
     }
-    codeAddress(place): void {
+    codeAddress(place: CityData): void {
         const geocoder = new google.maps.Geocoder();
         const address = place.name;
         geocoder.geocode({ address }, (results, status): void => {

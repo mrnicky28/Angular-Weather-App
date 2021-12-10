@@ -36,25 +36,24 @@ export class FullInfoOfWeatherComponent implements OnInit {
         // });
     }
 
-    addCity() {
+    addCity(): void {
         this.cityDetail.added = true;
         this.forecastService.addCity({ ...this.cityDetail });
-        console.log(this.cityDetail);
     }
 
-    removeCity() {
+    removeCity(): void {
         this.cityDetail.added = false;
         this.forecastService.removeCity({ ...this.cityDetail });
     }
 
-    getLocationWeatherCity() {
+    getLocationWeatherCity(): void {
         this.forecastService.getWeatherForecast().subscribe((data) => {
             this.dataToday = data;
             this.getTodayForecast(data);
             this.getTime();
         });
     }
-    getCityNowWeather() {
+    getCityNowWeather(): void {
         this.forecastService
             .getWeatherByCityName(this.cityData)
             .subscribe((data) => this.getTodayForecast(data));
@@ -64,13 +63,13 @@ export class FullInfoOfWeatherComponent implements OnInit {
         // });
     }
 
-    getTime() {
+    getTime(): void {
         setInterval(() => {
             this.clock = Date.now();
         }, 1000);
     }
 
-    dateRange() {
+    dateRange(): { start: Date; to: Date } {
         const start = new Date();
         start.setHours(start.getHours() + start.getTimezoneOffset() / 60);
         const to = new Date(start);
@@ -78,7 +77,7 @@ export class FullInfoOfWeatherComponent implements OnInit {
         return { start, to };
     }
 
-    getTodayForecast(today: DataToday) {
+    getTodayForecast(today: DataToday): void {
         this.timeline = [];
         this.dataToday = today;
 

@@ -24,13 +24,11 @@ export class ForecastService {
 
     constructor(private http: HttpClient) {}
 
-    changeData(data: CityData[]) {
-        console.log(this.currentData);
-
+    changeData(data: CityData[]): void {
         this.messageData.next(data);
     }
 
-    getWeatherForecast() {
+    getWeatherForecast(): Observable<DataToday> {
         return new Observable((observer) => {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
@@ -56,7 +54,7 @@ export class ForecastService {
         );
     }
 
-    getWeatherByCityName(cityData) {
+    getWeatherByCityName(cityData: CityData[]): Observable<DataToday> {
         return this.http.get<DataToday>(
             `${environment.weatherUrl}?lat=${cityData[0]?.lat}&lon=${cityData[0]?.lon}&units=${environment.units}&appid=${environment.API_KEY}`,
         );
@@ -70,7 +68,7 @@ export class ForecastService {
         this.subject.next({ ...this.weatherData });
     }
 
-    addCity(city: Place) {
+    addCity(city: Place): void {
         if (this.cityAlreadyAdded(city) === -1) {
             this.selectedCities.unshift(city);
             this.dispatchCities();
@@ -88,7 +86,7 @@ export class ForecastService {
         return index;
     }
 
-    removeCity(city: Place) {
+    removeCity(city: Place): void {
         const index = this.cityAlreadyAdded(city);
         if (index > -1) {
             this.selectedCities.splice(index, 1);
@@ -103,11 +101,11 @@ export class ForecastService {
         this.dispatchCities();
     }
 
-    setCities() {
+    setCities(): void {
         localStorage.setItem('cities', JSON.stringify(this.selectedCities));
     }
 
-    dispatchCities() {
+    dispatchCities(): void {
         this.cityUpdatedSub.next(this.selectedCities);
     }
 

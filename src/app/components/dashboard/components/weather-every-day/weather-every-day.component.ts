@@ -22,7 +22,7 @@ export class WeatherEveryDayComponent implements OnInit {
         });
     }
 
-    getLocationWeather() {
+    getLocationWeather(): void {
         this.forecastService
             .getWeatherForecast()
             .pipe(pluck('list'))
@@ -31,7 +31,7 @@ export class WeatherEveryDayComponent implements OnInit {
             });
     }
 
-    getCityData() {
+    getCityData(): void {
         this.weatherData = [];
         this.forecastService
             .getWeatherByCityName(this.cityData)
@@ -41,7 +41,7 @@ export class WeatherEveryDayComponent implements OnInit {
             });
     }
 
-    futureForecast(data) {
+    futureForecast(data: WeatherNow[]): void {
         for (let i = 0; i < data.length; i = i + 8) {
             this.weatherData.push(data[i]);
         }
